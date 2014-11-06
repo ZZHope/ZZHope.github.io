@@ -117,6 +117,269 @@
 
 
   
+    <article id="post-xml笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/06/xml笔记/" class="article-date">
+  <time datetime="2014-09-06T08:51:01.000Z" itemprop="datePublished">Sep 6 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/06/xml笔记/">xml笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="XML">XML</h1>
+<p>1.什么是XML？    </p>
+<p>XML：Extensible Markup Language(可扩展标记语言）   </p>
+<ul>
+<li>传输数据而非显示数据  (区别于HTML) </li>
+<li>标签没有没预定，需要自行定义标签，具有自我描述性   </li>
+<li>被设计为传输和存储数据，焦点是数据的内容   </li>
+</ul>
+<p>2.XML的特点？    </p>
+<ul>
+<li>仅仅是纯文本   </li>
+<li>可以发明自己的标签   </li>
+</ul>
+<p>3.XML的有点？    </p>
+<ul>
+<li>简化数据共享   </li>
+<li>简化数据传输*  </li>
+<li>简化平台变更   </li>
+<li>使数据更有用：独立于硬件、软件及应用程序</li>
+</ul>
+<p>4.树结构？（重点）    </p>
+<pre><code>例子：
+<span class="tag">&lt;<span class="title">bookstore</span>&gt;</span>
+<span class="tag">&lt;<span class="title">book</span> <span class="attribute">category</span>=<span class="value">"COOKING"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">title</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>Everyday Italian<span class="tag">&lt;/<span class="title">title</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">author</span>&gt;</span>Giada De Laurentiis<span class="tag">&lt;/<span class="title">author</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="title">year</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">price</span>&gt;</span>30.00<span class="tag">&lt;/<span class="title">price</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">book</span>&gt;</span>
+<span class="tag">&lt;<span class="title">book</span> <span class="attribute">category</span>=<span class="value">"CHILDREN"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">title</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="title">title</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="title">author</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="title">year</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="title">price</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">book</span>&gt;</span>
+<span class="tag">&lt;<span class="title">book</span> <span class="attribute">category</span>=<span class="value">"WEB"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">title</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span>Learning XML<span class="tag">&lt;/<span class="title">title</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">author</span>&gt;</span>Erik T. Ray<span class="tag">&lt;/<span class="title">author</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">year</span>&gt;</span>2003<span class="tag">&lt;/<span class="title">year</span>&gt;</span> 
+ <span class="tag">&lt;<span class="title">price</span>&gt;</span>39.95<span class="tag">&lt;/<span class="title">price</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">book</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">bookstore</span>&gt;</span>   
+</code></pre><p>注释：例子中的根元素是 bookstore。文档中的所有book元素都被包含在 bookstore 中。   </p>
+<pre><code><span class="subst">*</span> 创建<span class="built_in">xml</span>文件与plist文件一样，将后缀改为<span class="built_in">xml</span>;
+</code></pre><p>5.语法规则    </p>
+<pre><code><span class="keyword">*</span>XML必须有根元素   
+<span class="keyword">*</span>XML必须有关闭标签   
+<span class="keyword">*</span>XML标签对大小写敏感
+<span class="keyword">*</span>XML元素必须被正确嵌套 
+<span class="keyword">*</span>属性必须加双引号
+</code></pre><p>6.XML解析 (NSXMLParser解析方法)<br>*SAX: （！！只能读不能修改，解析速度快）    </p>
+<ul>
+<li>1）SAX（Simple APIs for XML），典型特点是：事件驱动，实现对XML的解析   </li>
+<li>2）对文档的解析   </li>
+<li>3）顺序访问机制，不能倒回去重新处理 </li>
+<li></li>
+<li>DOM：（！！不仅能读，还能修改，解析速度慢）   </li>
+<li><p>DOM （Document Object Model，文档对象模型）定义了访问和操作文档的标准方法。<br>*1） 数结构   </p>
+<p><em>*区别：SAX：遇到根元素进行初始化，顺序读下去，每读一行解析一行，基于事件的，    消耗内存比较小；<br>DOM：一次性把文件读入内存，我们可以读任意一个节点或者属性，消耗内存较大；一般用于服务器中
+</em>苹果内部用的是SAX </p>
+<hr>
+</li>
+</ul>
+<p>7.常用解析框架 (常用) </p>
+<p>   1)SAX::NSXMLParser 这是一个SAX方式解析XML的类库，默认包含在             iOS SDK中，使用也比较简单。   </p>
+<p>   2)DOM::<1>GDataXML，<a href="http://code.google.com/p/gdata-" target="_blank" rel="external">http://code.google.com/p/gdata-</a>        objectivec-client/source/browse/trunk/Source/        <2>XMLSupport/，这是一套Google开发的DOM方式XML解析类库，支持读        取和修改XML文档，支持XPath方式查询。<br>   3)libxml2:同时支持SAX 和DOM</2></1></p>
+<p> **#：解析步骤：<br> 1&gt;.对于SAX：   </p>
+<ul>
+<li><p>获取XML文件的路径  </p>
+</li>
+<li><p>根据URL 来创建XML的解析器NSParser对象  </p>
+</li>
+<li><p>设置XML解析器的代理（用代理方法解析）</p>
+</li>
+<li><p>开始解析    </p>
+</li>
+</ul>
+<p> 2&gt;.对于DOM：（用GDataXML第三方库）   </p>
+<ul>
+<li>获取XML文件的路径或者URL</li>
+<li>根据URL路径，把文件读入内存中（NSData对象：data）</li>
+<li>通过data对象创建DataXMLDocument （doc）对象</li>
+<li>取出XML的根元素（[doc rootElement]方法）;</li>
+<li>由于doc在内存中是树形结构，可以根据子元素的名字取出所有该子元素<br>  的子元素      </li>
+<li><p>遍历所有子元素，依次解析出子元素的属性和文本内容   </p>
+<ul>
+<li>for (GDataXMLElement *element in elements)    </li>
+<li>[element attributeForName:kCategory]方法   </li>
+</ul>
+</li>
+</ul>
+<h2 id="JSON">JSON</h2>
+<p>1.JSON定义和特点：   </p>
+<ul>
+<li>JSON （JavaScript Object Notation） JavaScript 对象表示法   </li>
+<li>JSON 是轻量级的文本数据交换格式      </li>
+<li>JSON 独立于语言   </li>
+<li>JSON 具有自我描述性，更易理解   </li>
+</ul>
+<p>2.JSON格式：（数组或者字典）   </p>
+<pre><code>[  
+
+ {   
+
+  <span class="string">"name"</span>: <span class="string">"zhangsan"</span>,   
+
+ <span class="string">"age"</span>: <span class="number">30</span>,   
+
+ <span class="string">"phone"</span>: [   
+
+       <span class="string">"123456"</span>,   
+
+       <span class="string">"654321"</span>   
+
+       ],   
+
+ <span class="string">"address"</span>: {   
+
+ <span class="string">"country"</span>: <span class="string">"china"</span>,   
+
+ <span class="string">"province"</span>: <span class="string">"henan"</span>   
+
+ },   
+
+ <span class="string">"married"</span>: <span class="keyword">false</span>   
+
+ },   
+
+ {   
+
+ <span class="string">"name"</span>: <span class="string">"lisi"</span>,   
+
+ <span class="string">"age"</span>: <span class="number">40</span>,   
+
+<span class="string">"phone"</span>: [   
+
+       <span class="string">"123456"</span>,   
+
+       <span class="string">"654321"</span>   
+
+       ],   
+
+<span class="string">"address"</span>: {   
+
+<span class="string">"country"</span>: <span class="string">"china"</span>,   
+
+<span class="string">"province"</span>: <span class="string">"henan"</span>   
+
+},   
+
+<span class="string">"married"</span>: <span class="keyword">false</span>   
+
+}   
+
+]  
+
+##*** <span class="built_in">array</span> 中可以放置的<span class="keyword">value</span>类型：
+                    <span class="built_in">string</span>,number ,<span class="keyword">object</span> ,<span class="built_in">array</span> ,<span class="keyword">true</span> ,<span class="keyword">false</span> ,null  
+</code></pre><p>3.JSON解析步骤   </p>
+<ul>
+<li>取出文件URL   </li>
+<li>创建data   </li>
+<li>使用NSJSONSeriazilation 来解析data(接收用数组还是字典根据文件    而定)</li>
+<li>一个一个元素解析，或者用字典遍历   </li>
+</ul>
+<p>4.JSON有用的网站   </p>
+<ul>
+<li>JSON格式校验网站：<a href="http://jsonlint.com" target="_blank" rel="external">http://jsonlint.com</a>    </li>
+<li>www.json.org    </li>
+<li>www.bejson.com (格式校验，开放接口等)   </li>
+</ul>
+<p>5.json 的解析框架：JSONKit（不常用，版本较低） 和 NSJSONSeriazilation（系统的，主流的）  </p>
+<ul>
+<li>www.json.org 网址上打开JSONKit选项然后复制网址，执行  git clone <a href="https://github.com/johnezang/JSONKit.git" target="_blank" rel="external">https://github.com/johnezang/JSONKit.git</a> (复制的网址)</li>
+</ul>
+<h2 id="第三方库的应用">第三方库的应用</h2>
+<ul>
+<li>添加库：Building setting —&gt;搜索include /Header     Search …选项，双击添加提示的库路径    </li>
+<li>链接：Building setting —&gt;搜索link/Other linker     flags … 选项—&gt; 双击添加链接   </li>
+<li>编译ARC和非ARC ：Building phase —&gt;找到Compile Source …选项 —&gt;在非ARC得文件后面添加“-fno-objc-arc ” </li>
+</ul>
+<h1 id="JSON与XML解析程序：">JSON与XML解析程序：</h1>
+<ul>
+<li>1.URL-&gt;NSRequest</li>
+<li><p>2.[NSURLConnection sendAsynchronousRequest:request     queue:[[NSOperationQueue alloc] init]             completionHandler:^(NSURLResponse <em>response, NSData     </em>data, NSError *connectionError) {  </p>
+<pre><code>   <span class="number">1</span>&gt;JSON步骤如下:
+
+  <span class="comment">// 反序列化</span>
+  <span class="built_in">NSArray</span> *array = [NSJSONSerialization JSONObjectWithData:data options:<span class="number">0</span> error:<span class="literal">NULL</span>];
+
+  <span class="comment">// 建立数组</span>
+  <span class="built_in">NSMutableArray</span> *arrayM = [<span class="built_in">NSMutableArray</span> array];
+
+  [array enumerateObjectsUsingBlock:^(<span class="keyword">id</span> obj, NSUInteger idx, <span class="built_in">BOOL</span> *stop) {
+      Video *v = [[Video alloc] init];
+
+      [v setValuesForKeysWithDictionary:obj];
+
+      [arrayM addObject:v];
+  }];
+
+  <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{
+      <span class="keyword">self</span><span class="variable">.videoList</span> = [arrayM <span class="keyword">copy</span>];
+
+      [<span class="keyword">self</span><span class="variable">.refreshControl</span> endRefreshing];
+    }); 
+</code></pre></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  <span class="number">2</span>) XML步骤：   </div><div class="line">      </div><div class="line"> <span class="comment">//1&gt;</span></div><div class="line">      NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];</div><div class="line">      </div><div class="line"><span class="comment">// 2&gt; 设置代理</span></div><div class="line">      parser.<span class="keyword">delegate</span> = <span class="keyword">self</span>;</div><div class="line">      </div><div class="line"><span class="comment">//3&gt; 开始解析</span></div><div class="line">      [parser parse];</div></pre></td></tr></table></figure>
+
+
+<p> }];</p>
+<h2 id="XML的代理方法">XML的代理方法</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">###pragma mark 1. 开始,准备工作，初始化一些数组，字符串</span></div><div class="line">- (<span class="keyword">void</span>)parserDidStartDocument:(NSXMLParser *)parser</div><div class="line">{</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"开始解析文档"</span>);</div><div class="line">    <span class="comment">// 准备工作</span></div><div class="line">    <span class="comment">// 1&gt; dataList</span></div><div class="line">        </div><div class="line">    <span class="comment">// 2&gt; elementString</span></div><div class="line">    <span class="comment">// 清空可变字符串不要设置成nil,使用setString只是清空内容,下次不会再次实例化</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="preprocessor">###pragma mark 2. 所有开始一个节点:<span class="title">&lt;element&gt;</span>，开始节点都在这里进行</span></div><div class="line">- (<span class="keyword">void</span>)parser:(NSXMLParser *)parser didStartElement:(<span class="built_in">NSString</span> *)elementName namespaceURI:(<span class="built_in">NSString</span> *)namespaceURI qualifiedName:(<span class="built_in">NSString</span> *)qName attributes:(<span class="built_in">NSDictionary</span> *)attributeDict</div><div class="line">{</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"开始节点:%@ %@"</span>, elementName, attributeDict);</div><div class="line">    <span class="comment">// 如果是&lt;video&gt;新建对象</span></div><div class="line">    <span class="keyword">if</span> ([elementName isEqualToString:<span class="string">@"video"</span>]) {</div><div class="line">        <span class="keyword">self</span><span class="variable">.v</span> = [[Video alloc] init];</div><div class="line">        <span class="keyword">self</span><span class="variable">.v</span><span class="variable">.videoId</span> = attributeDict[<span class="string">@"videoId"</span>];</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="comment">// 每开始一个新节点之前都清空elementString</span></div><div class="line">    <span class="comment">// 避免上一次的结果被重复拼接,例如拼完名字是"abc",再拼长度就会变成"vda1234"</span></div><div class="line">    [<span class="keyword">self</span><span class="variable">.elementString</span> setString:<span class="string">@""</span>];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="preprocessor">###pragma mark 3. 查找内容,可能会重复多次</span></div><div class="line">- (<span class="keyword">void</span>)parser:(NSXMLParser *)parser foundCharacters:(<span class="built_in">NSString</span> *)string</div><div class="line">{</div><div class="line">    <span class="comment">// 拼接字符串</span></div><div class="line">    [<span class="keyword">self</span><span class="variable">.elementString</span> appendString:string];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="preprocessor">###pragma mark 4. 节点结束 <span class="title">&lt;/element&gt;</span></span></div><div class="line">- (<span class="keyword">void</span>)parser:(NSXMLParser *)parser didEndElement:(<span class="built_in">NSString</span> *)elementName namespaceURI:(<span class="built_in">NSString</span> *)namespaceURI qualifiedName:(<span class="built_in">NSString</span> *)qName</div><div class="line">{</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"结束节点 %@"</span>, elementName);</div><div class="line">    <span class="comment">// 判断如果是&lt;name&gt;要复制</span></div><div class="line">    <span class="keyword">if</span> ([elementName isEqualToString:<span class="string">@"video"</span>]) {</div><div class="line">        [<span class="keyword">self</span><span class="variable">.dataList</span> addObject:<span class="keyword">self</span><span class="variable">.v</span>];</div><div class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (![elementName isEqualToString:<span class="string">@"videos"</span>]) {</div><div class="line">        [<span class="keyword">self</span><span class="variable">.v</span> setValue:<span class="keyword">self</span><span class="variable">.elementString</span> forKey:elementName];</div><div class="line">    }</div><div class="line">    <span class="comment">// 提示:使用KVC只要是数值型的属性,kvc会自动设置成对应的属性,而无需程序员参与</span></div><div class="line"><span class="comment">//    if ([elementName isEqualToString:@"name"]) {</span></div><div class="line"><span class="comment">//        self.v.name = self.elementString;</span></div><div class="line"><span class="comment">//    } else if ([elementName isEqualToString:@"length"]) {</span></div><div class="line"><span class="comment">//        self.v.length = [NSNumber numberWithInt:[self.elementString intValue]];</span></div><div class="line"><span class="comment">//    }</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="preprocessor">###pragma mark 5. 文档结束</span></div><div class="line">- (<span class="keyword">void</span>)parserDidEndDocument:(NSXMLParser *)parser</div><div class="line">{</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"解析结束 %@ %@"</span>, <span class="keyword">self</span><span class="variable">.dataList</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">    </div><div class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{</div><div class="line">        [<span class="keyword">self</span><span class="variable">.tableView</span> reloadData];</div><div class="line">        </div><div class="line">        <span class="comment">// 关闭刷新控件的刷新</span></div><div class="line">        [<span class="keyword">self</span><span class="variable">.refreshControl</span> endRefreshing];</div><div class="line">    });</div><div class="line"><span class="comment">//    [self.dataList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {</span></div><div class="line"><span class="comment">//        NSLog(@"%@", obj);</span></div><div class="line"><span class="comment">//    }];</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="preprocessor">###pragma mark 6. 出错处理</span></div><div class="line">- (<span class="keyword">void</span>)parser:(NSXMLParser *)parser parseErrorOccurred:(<span class="built_in">NSError</span> *)parseError</div><div class="line">{</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, parseError<span class="variable">.localizedDescription</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/09/06/xml笔记/" data-id="ptk39urad2n55gkl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOS-XML-JSON/">IOS XML JSON</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
   
 </section>
         
@@ -125,14 +388,28 @@
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS-XML-JSON/">IOS XML JSON</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IOS-XML-JSON/" style="font-size: NaNpx;">IOS XML JSON</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -145,6 +422,10 @@
         
           <li>
             <a href="/2014/11/06/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/06/xml笔记/">xml笔记</a>
           </li>
         
       </ul>
